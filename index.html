@@ -22,7 +22,8 @@ body::before{content:'';position:fixed;inset:0;background:
 #embers{position:fixed;inset:0;pointer-events:none;z-index:1;overflow:hidden;}
 .ember{position:absolute;border-radius:50%;background:var(--ember);
   box-shadow:0 0 8px var(--lava),0 0 2px #fff;animation:floatUp linear infinite;opacity:0;}
-@keyframes floatUp{0%{transform:translateY(100vh) translateX(0) scale(1);opacity:0;}
+@keyframes floatUp{
+  0%{transform:translateY(100vh) translateX(0) scale(1);opacity:0;}
   8%{opacity:.9;}80%{opacity:.3;}
   100%{transform:translateY(-15vh) translateX(var(--drift)) scale(.2);opacity:0;}}
 #app{position:relative;z-index:2;min-height:100vh;display:flex;
@@ -30,12 +31,12 @@ body::before{content:'';position:fixed;inset:0;background:
 .screen{display:none;width:100%;max-width:780px;}
 .screen.active{display:flex;flex-direction:column;align-items:center;
   animation:screenIn .45s cubic-bezier(.22,1,.36,1);}
-@keyframes screenIn{from{opacity:0;transform:translateY(28px) scale(.98);}
+@keyframes screenIn{
+  from{opacity:0;transform:translateY(28px) scale(.98);}
   to{opacity:1;transform:none;}}
 .card{background:rgba(22,16,10,.92);border:1px solid rgba(200,120,40,.28);
   border-radius:18px;padding:36px 38px;width:100%;backdrop-filter:blur(12px);
   box-shadow:0 24px 70px rgba(0,0,0,.6),0 1px 0 rgba(255,200,80,.07) inset;}
-/* typography */
 .dtitle{font-family:'Cinzel Decorative',serif;font-size:clamp(2rem,6.5vw,4.2rem);
   font-weight:900;text-align:center;
   background:linear-gradient(160deg,#FFE566 0%,#FF8C00 50%,#FF4500 100%);
@@ -52,7 +53,10 @@ body::before{content:'';position:fixed;inset:0;background:
 .idesc{color:#c8b090;line-height:1.9;font-size:1.05rem;font-style:italic;
   text-align:center;margin-bottom:28px;}
 .idesc strong{color:var(--ember);font-style:normal;}
-/* buttons */
+.namebadge{display:inline-block;font-family:'Cinzel',serif;font-size:.72rem;
+  letter-spacing:3px;text-transform:uppercase;color:var(--gold);
+  background:rgba(255,215,0,.10);border:1px solid rgba(255,215,0,.25);
+  border-radius:20px;padding:5px 14px;margin-bottom:16px;}
 .btn{font-family:'Cinzel',serif;font-weight:700;letter-spacing:2px;
   text-transform:uppercase;border:none;cursor:pointer;transition:all .2s;border-radius:10px;}
 .btnf{font-size:1rem;padding:17px 44px;
@@ -68,7 +72,6 @@ body::before{content:'';position:fixed;inset:0;background:
 .btno{font-size:.85rem;padding:12px 0;width:100%;background:transparent;
   border:1px solid rgba(200,120,40,.35);color:var(--ember);margin-top:10px;}
 .btno:hover{background:rgba(255,140,0,.08);}
-/* input */
 .ifield{width:100%;background:rgba(255,255,255,.06);border:1px solid rgba(200,120,40,.3);
   border-radius:10px;padding:14px 18px;color:var(--cream);font-family:'Lora',serif;
   font-size:1.05rem;margin-top:8px;margin-bottom:22px;outline:none;transition:border-color .2s;}
@@ -78,12 +81,12 @@ body::before{content:'';position:fixed;inset:0;background:
 /* progress */
 .pw{width:100%;text-align:center;margin-bottom:22px;}
 .pdots{display:flex;justify-content:center;align-items:center;}
-.pdot{width:15px;height:15px;border-radius:50%;background:rgba(255,255,255,.12);
+.pdot{width:14px;height:14px;border-radius:50%;background:rgba(255,255,255,.12);
   border:2px solid rgba(200,120,40,.3);transition:all .4s;flex-shrink:0;}
 .pdot.done{background:var(--jlight);border-color:var(--jlight);}
 .pdot.now{background:var(--lava);border-color:var(--ember);
   box-shadow:0 0 18px var(--lava);transform:scale(1.35);}
-.pline{width:48px;height:2px;background:rgba(200,120,40,.18);flex-shrink:0;}
+.pline{width:34px;height:2px;background:rgba(200,120,40,.18);flex-shrink:0;}
 .pline.done{background:var(--jlight);}
 /* stage */
 .snum{font-family:'Cinzel',serif;font-size:.72rem;letter-spacing:4px;
@@ -124,7 +127,7 @@ body::before{content:'';position:fixed;inset:0;background:
   border-radius:30px;padding:7px 18px;margin-bottom:16px;}
 .qbtext{font-family:'Cinzel',serif;font-size:.72rem;letter-spacing:3px;
   text-transform:uppercase;color:var(--gold);}
-.qtext{font-size:1.1rem;line-height:1.8;color:var(--bone);margin-bottom:24px;text-align:center;}
+.qtext{font-size:1.08rem;line-height:1.85;color:var(--bone);margin-bottom:24px;text-align:center;}
 .qopts{display:flex;flex-direction:column;gap:10px;width:100%;}
 .qopt{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);
   border-radius:11px;padding:14px 18px;cursor:pointer;text-align:left;
@@ -147,9 +150,12 @@ body::before{content:'';position:fixed;inset:0;background:
 @keyframes bpop{0%{transform:scale(0);opacity:0;}100%{transform:scale(1);opacity:1;}}
 /* dice */
 .bdbanner{background:rgba(255,215,0,.10);border:1px solid rgba(255,215,0,.35);
-  border-radius:10px;padding:10px 18px;text-align:center;margin-bottom:16px;display:none;}
+  border-radius:10px;padding:10px 18px;text-align:center;margin-bottom:14px;display:none;}
 .bdbanner.show{display:block;}
-.dcon{display:flex;justify-content:center;align-items:center;gap:22px;margin:24px 0;}
+.doubles-banner{background:rgba(240,64,64,.15);border:1px solid rgba(240,64,64,.4);
+  border-radius:10px;padding:12px 18px;text-align:center;margin:14px 0;display:none;}
+.doubles-banner.show{display:block;}
+.dcon{display:flex;justify-content:center;align-items:center;gap:22px;margin:20px 0;}
 .diebox{width:88px;height:88px;background:linear-gradient(145deg,#fff,#e8e0d0);
   border-radius:14px;display:flex;align-items:center;justify-content:center;
   font-family:'Cinzel Decorative',serif;font-size:2.7rem;font-weight:900;color:#1a0e00;
@@ -158,18 +164,20 @@ body::before{content:'';position:fixed;inset:0;background:
 .diebox.rolling{animation:wobble .1s ease-in-out infinite;}
 .diebox.settled{animation:land .4s cubic-bezier(.34,1.56,.64,1) forwards;
   box-shadow:0 0 0 3px var(--gold),0 6px 30px rgba(255,200,0,.3);}
+.diebox.doubles-settled{animation:land .4s cubic-bezier(.34,1.56,.64,1) forwards;
+  box-shadow:0 0 0 3px var(--high),0 6px 30px rgba(240,64,64,.3);}
 @keyframes wobble{0%,100%{transform:rotate(-4deg) scale(1);}50%{transform:rotate(4deg) scale(1.06);}}
 @keyframes land{0%{transform:scale(1.3) rotate(8deg);}60%{transform:scale(.95) rotate(-2deg);}100%{transform:scale(1) rotate(0);}}
 .dtotalwrap{text-align:center;margin-top:4px;}
-.dtotalnum{font-family:'Cinzel Decorative',serif;font-size:2.8rem;color:var(--gold);
+.dtotalnum{font-family:'Cinzel Decorative',serif;font-size:2.5rem;color:var(--gold);
   text-shadow:0 0 30px rgba(255,200,0,.5);}
 .dlucktag{font-family:'Cinzel',serif;font-size:.75rem;letter-spacing:3px;
   text-transform:uppercase;margin-top:6px;}
 .lbad{color:#ff8a8a;}.lok{color:var(--sand);}.lgood{color:#78e09a;}
 .drbox{background:rgba(255,255,255,.04);border:1px solid rgba(200,120,40,.2);
-  border-radius:10px;padding:12px 18px;margin:16px 0;text-align:center;}
+  border-radius:10px;padding:12px 18px;margin:14px 0;text-align:center;}
 .drbox p{font-size:.9rem;color:#bba880;font-style:italic;line-height:1.6;}
-/* minigame */
+/* mini 1 - fire */
 .tcircle{width:80px;height:80px;border-radius:50%;border:4px solid rgba(255,70,0,.25);
   display:flex;align-items:center;justify-content:center;margin:0 auto 14px;}
 .tcircle.urgent{border-color:var(--lava);box-shadow:0 0 20px rgba(255,0,0,.5);
@@ -179,7 +187,8 @@ body::before{content:'';position:fixed;inset:0;background:
 .flvl{font-family:'Cinzel Decorative',serif;font-size:1.05rem;color:var(--gold);
   text-align:center;margin-bottom:6px;min-height:1.5em;}
 .fvis{font-size:3rem;display:block;text-align:center;margin-bottom:10px;transition:font-size .25s;}
-.ftrack{width:100%;height:10px;background:rgba(255,255,255,.07);border-radius:5px;overflow:hidden;margin-bottom:10px;}
+.ftrack{width:100%;height:10px;background:rgba(255,255,255,.07);border-radius:5px;
+  overflow:hidden;margin-bottom:10px;}
 .ffill{height:100%;border-radius:5px;
   background:linear-gradient(90deg,#FF4500,#FF8C00,#FFD700);transition:width .12s ease;width:0%;}
 .fstats{display:flex;justify-content:space-around;margin-bottom:18px;}
@@ -188,10 +197,39 @@ body::before{content:'';position:fixed;inset:0;background:
 .fbtn{font-family:'Cinzel Decorative',serif;font-size:1.35rem;padding:22px 52px;
   background:linear-gradient(135deg,#FF4500,#FF8C00,#FFD700);color:#1a0e00;
   border:none;border-radius:16px;cursor:pointer;box-shadow:0 8px 30px rgba(255,70,0,.5);
-  transition:transform .08s;user-select:none;-webkit-user-select:none;touch-action:manipulation;
-  display:block;margin:0 auto 16px;}
+  transition:transform .08s;user-select:none;-webkit-user-select:none;
+  touch-action:manipulation;display:block;margin:0 auto 16px;}
 .fbtn:active{transform:scale(.93);}
 .fbtn:disabled{opacity:.4;pointer-events:none;}
+/* mini 2 - flare timing */
+.flare-track-wrap{position:relative;width:100%;height:70px;
+  background:rgba(0,0,0,.3);border:1px solid rgba(200,120,40,.25);
+  border-radius:12px;overflow:hidden;margin:16px 0;}
+.flare-zone{position:absolute;top:0;bottom:0;left:35%;width:30%;
+  background:rgba(255,200,0,.12);border-left:2px solid rgba(255,200,0,.4);
+  border-right:2px solid rgba(255,200,0,.4);}
+.flare-zone-perfect{position:absolute;top:0;bottom:0;left:42%;width:16%;
+  background:rgba(255,200,0,.22);}
+.flare-zone-label{position:absolute;bottom:4px;left:50%;transform:translateX(-50%);
+  font-family:'Cinzel',serif;font-size:.55rem;letter-spacing:2px;color:var(--gold);
+  text-transform:uppercase;white-space:nowrap;}
+.flare-plane{position:absolute;top:50%;transform:translateY(-50%);
+  font-size:1.8rem;transition:none;left:0%;}
+.flare-hit-marker{position:absolute;top:0;bottom:0;width:3px;background:var(--lava);
+  display:none;box-shadow:0 0 8px var(--lava);}
+.flare-firebtn{font-family:'Cinzel Decorative',serif;font-size:1.35rem;padding:22px 52px;
+  background:linear-gradient(135deg,#5B2FBE,#FF4500);color:#fff;
+  border:none;border-radius:16px;cursor:pointer;
+  box-shadow:0 8px 30px rgba(91,47,190,.5);
+  transition:transform .08s;user-select:none;-webkit-user-select:none;
+  touch-action:manipulation;display:block;margin:0 auto 16px;letter-spacing:1px;
+  font-weight:900;}
+.flare-firebtn:active{transform:scale(.93);}
+.flare-firebtn:disabled{opacity:.4;pointer-events:none;}
+.accuracy-bar-wrap{width:100%;height:8px;background:rgba(255,255,255,.07);
+  border-radius:4px;overflow:hidden;margin-bottom:8px;}
+.accuracy-bar-fill{height:100%;border-radius:4px;
+  background:linear-gradient(90deg,#FF4500,#FFD700);width:0%;transition:width .3s;}
 /* outcome */
 .oem{font-size:5.5rem;text-align:center;display:block;margin:4px 0 10px;
   animation:bounce .55s cubic-bezier(.34,1.56,.64,1);}
@@ -205,6 +243,7 @@ body::before{content:'';position:fixed;inset:0;background:
   font-size:1.9rem;padding:10px 34px;border-radius:50px;margin:0 auto 16px;}
 .pup{background:rgba(82,196,114,.18);border:2px solid var(--low);color:#78e09a;}
 .pdn{background:rgba(240,64,64,.18);border:2px solid var(--high);color:#ff8a8a;}
+.pze{background:rgba(200,120,40,.18);border:2px solid var(--sand);color:var(--sand);}
 .sbox{background:rgba(255,255,255,.04);border:1px solid rgba(200,120,40,.2);
   border-radius:10px;padding:14px;text-align:center;margin-bottom:22px;}
 /* summary */
@@ -226,8 +265,8 @@ body::before{content:'';position:fixed;inset:0;background:
 .lrow{display:flex;align-items:center;gap:10px;padding:9px 0;
   border-bottom:1px solid rgba(255,255,255,.06);}
 .lsnum{font-family:'Cinzel',serif;font-size:.68rem;letter-spacing:2px;
-  color:var(--sand);min-width:52px;flex-shrink:0;}
-.lctext{font-size:.85rem;color:#bba880;font-style:italic;flex:1;line-height:1.4;}
+  color:var(--sand);min-width:48px;flex-shrink:0;}
+.lctext{font-size:.82rem;color:#bba880;font-style:italic;flex:1;line-height:1.4;}
 .rtag{font-family:'Cinzel',serif;font-size:.62rem;letter-spacing:1px;
   text-transform:uppercase;padding:3px 9px;border-radius:20px;flex-shrink:0;}
 .rtl{background:rgba(82,196,114,.18);color:#78e09a;border:1px solid rgba(82,196,114,.5);}
@@ -243,8 +282,9 @@ body::before{content:'';position:fixed;inset:0;background:
   .card,#sumcard{padding:24px 18px;}
   .srow{grid-template-columns:1fr;}
   .diebox{width:70px;height:70px;font-size:2rem;}
-  .fbtn{font-size:1.1rem;padding:18px 32px;}
+  .fbtn,.flare-firebtn{font-size:1.1rem;padding:18px 28px;}
   .qopt{font-size:.9rem;}
+  .pline{width:22px;}
 }
 </style>
 </head>
@@ -257,14 +297,15 @@ body::before{content:'';position:fixed;inset:0;background:
   <div class="volcano">&#x1F30B;</div>
   <div class="dtitle">Volcano Island<br>Survivor</div>
   <div class="tagline">A Risk &amp; Reward Adventure</div><br>
-  <div class="card" style="text-align:center;max-width:620px">
+  <div class="card" style="text-align:center;max-width:640px">
     <p class="idesc">
       You are <strong>stranded</strong> on a volcanic island.<br>
       Every choice carries <strong>RISK</strong> and every risk has a <strong style="color:var(--gold)">REWARD</strong>.<br><br>
-      &#x1F7E2; Low risk = safe, guaranteed &nbsp;|&nbsp; &#x1F7E1; Medium = 1 die<br>
-      &#x1F534; High risk = 2 dice &mdash; big swings up OR down<br><br>
-      <strong>Answer questions correctly to earn a BONUS die!</strong><br><br>
-      5 stages. Choose wisely. Survive.
+      &#x1F7E2; Low risk = safe, guaranteed &nbsp;|&nbsp; &#x1F7E1; Medium = 1 die (rolls 1-4 = bad!)<br>
+      &#x1F534; High risk = 2 dice &mdash; <strong style="color:var(--high)">DOUBLES = automatic zero.</strong> Most rolls lose.<br>
+      Only the luckiest survivors beat the safe path.<br><br>
+      <strong>Answer questions correctly to earn a BONUS die!</strong><br>
+      8 stages. 2 mini-games. Choose wisely.
     </p>
     <button class="btn btnf" onclick="showScreen('s-setup')">&#x1F3DD; &nbsp;Begin the Adventure</button>
   </div>
@@ -276,12 +317,10 @@ body::before{content:'';position:fixed;inset:0;background:
     <div class="sh">Before We Begin...</div>
     <div class="tagline" style="margin-top:6px">Tell us who is surviving today</div>
   </div>
-  <div class="card" style="max-width:520px">
-    <div class="lc">Breakout Room Number</div>
-    <input class="ifield" id="inp-room" type="number" min="1" max="99" placeholder="e.g. 3">
-    <div class="lc">Your Survivor Name / Avatar</div>
-    <input class="ifield" id="inp-avatar" type="text" maxlength="28" placeholder="e.g. Shadow Wolf, Captain Blaze...">
-    <p class="errmsg" id="setup-err" style="display:none">Fill in both fields to continue!</p>
+  <div class="card" style="max-width:480px">
+    <div class="lc">Your Name</div>
+    <input class="ifield" id="inp-name" type="text" maxlength="24" placeholder="First name or nickname...">
+    <p class="errmsg" id="setup-err" style="display:none">Enter your name to continue!</p>
     <button class="btn btnf" onclick="startGame()" style="width:100%">&#x1F30B; &nbsp;Start Surviving</button>
   </div>
 </div>
@@ -307,7 +346,7 @@ body::before{content:'';position:fixed;inset:0;background:
     <div style="text-align:center;margin-bottom:18px">
       <div class="qbadge"><span>&#x1F4DA;</span><span class="qbtext">Knowledge Check &mdash; Earn a Bonus Die!</span></div>
       <div class="sh" style="font-size:1.3rem;margin-top:4px">Risk &amp; Reward</div>
-      <p style="color:var(--sand);font-family:'Cinzel',serif;font-size:.75rem;letter-spacing:2px;margin-top:4px">ANSWER CORRECTLY &rarr; GET AN EXTRA &#x1F3B2;</p>
+      <p style="color:var(--sand);font-family:'Cinzel',serif;font-size:.72rem;letter-spacing:2px;margin-top:4px">ANSWER CORRECTLY &rarr; BONUS &#x1F3B2; FOR YOUR ROLL</p>
     </div>
     <p class="qtext" id="q-text"></p>
     <div class="qopts" id="q-opts"></div>
@@ -323,34 +362,43 @@ body::before{content:'';position:fixed;inset:0;background:
 <div class="screen" id="s-dice">
   <div class="pw" id="pw-dice"></div>
   <div class="card" style="text-align:center;max-width:520px">
+    <div class="namebadge" id="dice-namebadge"></div>
     <div class="lc" id="dice-label" style="margin-bottom:6px"></div>
     <div class="sh" id="dice-header"></div>
     <div class="bdbanner" id="dice-banner">
-      <span style="font-family:'Cinzel',serif;font-size:.8rem;letter-spacing:2px;color:var(--gold)">BONUS DIE ACTIVE! Your knowledge improved your odds!</span>
+      <span style="font-family:'Cinzel',serif;font-size:.78rem;letter-spacing:2px;color:var(--gold)">&#x2728; BONUS DIE ACTIVE! Knowledge improved your odds!</span>
     </div>
     <div class="drbox"><p id="dice-info"></p></div>
+    <div id="doubles-rule-note" style="font-family:'Cinzel',serif;font-size:.72rem;letter-spacing:2px;color:#ff8a8a;margin-bottom:8px;display:none">
+      &#x26A0; HIGH RISK: DOUBLES = AUTOMATIC ZERO
+    </div>
     <div class="dcon" id="dcon"></div>
+    <div class="doubles-banner" id="doubles-banner">
+      <span style="font-family:'Cinzel Decorative',serif;font-size:1.1rem;color:#ff8a8a">&#x1F3B2; DOUBLES &mdash; AUTOMATIC ZERO!</span>
+      <p style="font-family:'Cinzel',serif;font-size:.75rem;letter-spacing:2px;color:#ffaaaa;margin-top:6px">The universe said no. That's the risk you took.</p>
+    </div>
     <div class="dtotalwrap" id="dtotalwrap" style="display:none">
       <div class="lc" style="margin-bottom:8px">You Rolled</div>
       <div class="dtotalnum" id="dtotalnum"></div>
       <div class="dlucktag" id="dlucktag"></div>
     </div>
-    <div style="margin-top:24px">
+    <div style="margin-top:20px">
       <button class="btn btnf" id="dice-roll-btn" onclick="rollDice()" style="width:100%">&#x1F3B2; &nbsp;Roll!</button>
-      <button class="btn btnf" id="dice-rev-btn" onclick="revealOutcome()" style="display:none;width:100%">Reveal My Fate!</button>
+      <button class="btn btnf" id="dice-rev-btn" onclick="revealOutcome()" style="display:none;width:100%">&#x26A1; Reveal My Fate!</button>
     </div>
   </div>
 </div>
 
-<!-- MINIGAME -->
-<div class="screen" id="s-mini">
-  <div class="pw" id="pw-mini"></div>
+<!-- MINI 1: FIRE -->
+<div class="screen" id="s-mini1">
+  <div class="pw" id="pw-mini1"></div>
   <div class="card" style="max-width:520px">
     <div style="text-align:center;margin-bottom:14px">
       <div class="lc" style="color:var(--high);margin-bottom:6px">STAGE 3 &mdash; EVERYONE PLAYS!</div>
-      <div class="sh">BUILD THE FIRE! &#x1F525;</div>
+      <div class="sh">BUILD THE SIGNAL FIRE! &#x1F525;</div>
       <p style="color:#cbb890;font-style:italic;font-size:.95rem;margin-top:10px;line-height:1.7">
-        A boat is on the horizon! Click as <strong style="color:var(--ember);font-style:normal">FAST as you can</strong> to build your signal fire before it sails away!
+        <span id="fire-name-tag"></span>, a boat is on the horizon!<br>
+        Click as <strong style="color:var(--ember);font-style:normal">FAST as you can</strong> to build your signal fire before it disappears!
       </p>
     </div>
     <div class="tcircle" id="tcircle"><div class="tnum" id="tnum">10</div></div>
@@ -362,8 +410,48 @@ body::before{content:'';position:fixed;inset:0;background:
       <div class="fstat"><div class="lc" style="margin-bottom:4px">Fire Level</div><div class="fstatnum" id="ftier">--</div></div>
     </div>
     <button class="fbtn" id="fbtn" onclick="clickFire(event)" ontouchstart="clickFire(event)">&#x1F525; ADD WOOD!</button>
-    <div id="mini-start" style="text-align:center">
-      <button class="btn btnf" id="mini-startbtn" onclick="startFire()" style="width:100%">&#x1F525; &nbsp;Start the Fire!</button>
+    <div id="mini1-start" style="text-align:center">
+      <button class="btn btnf" id="mini1-startbtn" onclick="startFire()" style="width:100%">&#x1F525; &nbsp;Start the Fire!</button>
+    </div>
+  </div>
+</div>
+
+<!-- MINI 2: FLARE TIMING -->
+<div class="screen" id="s-mini2">
+  <div class="pw" id="pw-mini2"></div>
+  <div class="card" style="max-width:520px">
+    <div style="text-align:center;margin-bottom:14px">
+      <div class="lc" style="color:var(--high);margin-bottom:6px">STAGE 7 &mdash; EVERYONE PLAYS!</div>
+      <div class="sh">FIRE THE RESCUE FLARE! &#x1F386;</div>
+      <p style="color:#cbb890;font-style:italic;font-size:.95rem;margin-top:10px;line-height:1.7">
+        <span id="flare-name-tag"></span>, a rescue plane is making ONE pass overhead!<br>
+        Hit <strong style="color:var(--ember);font-style:normal">FIRE FLARE</strong> when the plane is inside the <strong style="color:var(--gold);font-style:normal">GOLDEN ZONE</strong>!
+      </p>
+    </div>
+    <div style="margin:16px 0">
+      <div style="display:flex;justify-content:space-between;margin-bottom:6px">
+        <span style="font-family:'Cinzel',serif;font-size:.65rem;letter-spacing:2px;color:var(--sand)">TOO EARLY</span>
+        <span style="font-family:'Cinzel',serif;font-size:.65rem;letter-spacing:2px;color:var(--gold)">FIRE ZONE</span>
+        <span style="font-family:'Cinzel',serif;font-size:.65rem;letter-spacing:2px;color:var(--sand)">TOO LATE</span>
+      </div>
+      <div class="flare-track-wrap" id="flare-track">
+        <div class="flare-zone"></div>
+        <div class="flare-zone-perfect"></div>
+        <div class="flare-zone-label">PERFECT</div>
+        <div class="flare-plane" id="flare-plane">&#x2708;</div>
+        <div class="flare-hit-marker" id="flare-marker"></div>
+      </div>
+      <div style="text-align:center;margin-top:8px">
+        <span style="font-family:'Cinzel',serif;font-size:.72rem;letter-spacing:2px;color:var(--ember)" id="flare-status">Waiting for the plane...</span>
+      </div>
+    </div>
+    <div style="margin-bottom:16px">
+      <div class="lc" style="margin-bottom:6px;text-align:center">Accuracy</div>
+      <div class="accuracy-bar-wrap"><div class="accuracy-bar-fill" id="acc-fill"></div></div>
+    </div>
+    <button class="flare-firebtn" id="flare-btn" onclick="fireFlare()" disabled>&#x1F386; FIRE FLARE!</button>
+    <div id="mini2-start" style="text-align:center">
+      <button class="btn btnf" id="mini2-startbtn" onclick="startFlare()" style="width:100%">&#x2708; &nbsp;Launch the Challenge!</button>
     </div>
   </div>
 </div>
@@ -396,7 +484,7 @@ body::before{content:'';position:fixed;inset:0;background:
       <div style="font-family:'Cinzel',serif;font-size:.72rem;letter-spacing:3px;color:var(--sand);margin-top:4px" id="sum-tier"></div>
     </div>
     <div class="srow">
-      <div class="sbox2"><div class="lc">Breakout Room</div><div class="sval" id="sum-room"></div></div>
+      <div class="sbox2"><div class="lc">Survivor</div><div class="sval" id="sum-name"></div></div>
       <div class="sbox2"><div class="lc">Risk Personality</div><div class="sval" id="sum-pers"></div></div>
     </div>
     <div class="srow" style="margin-top:-8px">
@@ -405,7 +493,7 @@ body::before{content:'';position:fixed;inset:0;background:
     </div>
     <hr class="divider">
     <div style="margin-bottom:22px">
-      <div class="lc" style="margin-bottom:12px">Your Survival Choices</div>
+      <div class="lc" style="margin-bottom:12px">&#x1F4DC; Your Survival Log</div>
       <div id="log-list"></div>
     </div>
     <hr class="divider">
@@ -413,14 +501,14 @@ body::before{content:'';position:fixed;inset:0;background:
   </div>
   <div style="width:100%;margin-top:18px">
     <button class="btn btng" onclick="screenshot()">&#x1F4F8; &nbsp;Save My Survival Card!</button>
-    <button class="btn btno" onclick="replay()">Replay</button>
+    <button class="btn btno" onclick="replay()">&#x1F504; &nbsp;Play Again</button>
   </div>
 </div>
 
-</div>
+</div><!-- #app -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 <script>
-// Embers
+// ---- EMBERS ----
 (function(){
   var c=document.getElementById('embers');
   for(var i=0;i<22;i++){
@@ -432,115 +520,190 @@ body::before{content:'';position:fixed;inset:0;background:
   }
 })();
 
-// ---- DATA ----
+// =====================================================
+// PROBABILITY DESIGN (per audit):
+// LOW:  guaranteed pts. Always collects.
+// MED:  1 die. Rolls 1-4 (67%) = 0 pts. Rolls 5-6 (33%) = good reward.
+//       EV ~ 10 pts. Usually WORSE than safe.
+// HIGH: 2 dice. DOUBLES (17%) = auto 0.
+//       Non-double sum 3-7 (50%) = negative pts.
+//       Non-double sum 8-9 (22%) = small/even reward.
+//       Non-double sum 10-11 (11%) = BIG reward.
+//       EV ~ 0 pts. Only ~11% beat safe option.
+// =====================================================
+
 var STAGES=[
+  // INDEX 0: Stage 1
   {id:1,emoji:'&#x1F30A;',title:'THE CRASH LANDING',
-   scenario:"Your boat was shattered in a brutal storm. You've crawled ashore onto an unknown volcanic island -- alone, exhausted, soaked. The sun is setting fast. You have maybe 30 minutes of light left. Where do you shelter?",
+   scenario:'{NAME}, your boat was shattered by a brutal storm. You have crawled ashore onto an unknown volcanic island -- alone, exhausted, and soaked. The sun is setting fast. Where do you shelter?',
    choices:[
-    {key:'A',risk:'low',text:"Build a quick shelter on the open beach using driftwood and palm leaves. Safe, simple, right here.",
-     outcomes:[{emoji:'&#x1F60C;',title:'Safe & Steady',body:"Your shelter holds through the night. Cold, but you wake rested and ready for day two.",pts:16}]},
-    {key:'B',risk:'med',text:"Move to the jungle edge -- better cover from wind and rain, but darker and unknown.",
-     diceInfo:"1 die: low roll (1-3) = rough terrifying night. High roll (4-6) = lucky discovery!",
+    {key:'A',risk:'low',text:'Build a quick shelter on the open beach using driftwood and palm leaves. Safe, simple, right here.',
+     outcomes:[{emoji:'&#x1F60C;',title:'Safe and Steady',body:"Your shelter holds through the night. Cold, but you wake rested and ready for day two.",pts:17}]},
+    {key:'B',risk:'med',text:'Move to the jungle edge -- better cover from the wind and rain, but darker and unknown.',
+     diceInfo:'1 die: rolls 1-4 = rough night with zero gains. Rolls 5-6 = lucky discovery!',
      outcomes:[
-      {emoji:'&#x1F62C;',title:'Terrible Night',body:"Something large moved in the dark all night. Zero sleep, scratched up, and genuinely terrified.",pts:-7},
-      {emoji:'&#x1F333;',title:'Jungle Fortune!',body:"The canopy gives perfect shelter AND you find a freshwater stream. Two wins in one night!",pts:36}]},
-    {key:'C',risk:'high',text:"Climb the rocky cliffs in fading light to find a cave with a full view of the island.",
-     diceInfo:"2 dice: bad (2-5) = dangerous fall. Mid (6-8) = cave but injured. Great (9-12) = JACKPOT!",
+      {emoji:'&#x1F62C;',title:'Terrible Night',body:"Something large moved in the dark all night long. Zero sleep, scratched up, genuinely terrified.",pts:0},
+      {emoji:'&#x1F333;',title:'Jungle Fortune!',body:"The canopy is incredible shelter AND you find a freshwater stream nearby. Two wins in one night!",pts:44}]},
+    {key:'C',risk:'high',text:'Climb the rocky cliffs in the fading light to find a cave with a full view of the island.',
+     diceInfo:'2 dice: DOUBLES=auto zero. Sum 3-7=BAD (-18pts). Sum 8-9=ok (+24pts). Sum 10-11=JACKPOT (+100pts)!',
      outcomes:[
-      {emoji:'&#x1F480;',title:'BAD FALL!',body:"You slipped on wet rock in fading light. Badly injured and stuck on the bare beach in the dark.",pts:-20},
-      {emoji:'&#x1F9B6;',title:'Ouch...',body:"Found a cave! But twisted your ankle badly on the climb up. Shelter great, ankle not so much.",pts:16},
-      {emoji:'&#x1F3C6;',title:'JACKPOT CAVE!',body:"Fire-making tools AND dried food left by previous survivors. You just won the island lottery!",pts:56}]}
+      {emoji:'&#x1F480;',title:'WIPEOUT!',body:"You slipped on wet rock in fading light. Badly injured, stuck on the bare beach in the dark.",pts:-18},
+      {emoji:'&#x1F9B6;',title:'Cave Found... Barely',body:"Found a cave but twisted your ankle badly on the way up. The shelter is fine. The ankle is not.",pts:24},
+      {emoji:'&#x1F3C6;',title:'JACKPOT CAVE!',body:"Fire-making tools AND dried food left by previous survivors. You just won the island lottery!",pts:100}]}
   ]},
+  // INDEX 1: Stage 2
   {id:2,emoji:'&#x1F37D;',title:'THE HUNGER GAMES',
-   scenario:"Day 2. Your stomach is screaming. Three options: coconuts on a climbable tree, crabs along the shoreline, and brilliantly colored berries deep in the jungle. What do you eat?",
+   scenario:'{NAME}, day two and your stomach is screaming. Three options: coconuts on a climbable tree, crabs along the shoreline, and brilliantly colored berries deep in the jungle. What do you eat?',
    choices:[
-    {key:'A',risk:'low',text:"Stick to coconuts -- not exciting, but 100% safe and definitely edible.",
-     outcomes:[{emoji:'&#x1F965;',title:'Slow & Steady',body:"Coconuts keep you going. Smart, safe, and alive heading into day three.",pts:14}]},
-    {key:'B',risk:'med',text:"Hunt crabs along the rocky shoreline -- way more effort, but way more protein.",
-     diceInfo:"1 die: bad (1-3) = barely catch one. Good (4-6) = absolute feast!",
+    {key:'A',risk:'low',text:'Stick to coconuts -- not exciting, but 100% safe and definitely edible.',
+     outcomes:[{emoji:'&#x1F965;',title:'Slow and Steady',body:"Coconuts keep you going. Smart, safe, and alive heading into day three.",pts:15}]},
+    {key:'B',risk:'med',text:'Hunt crabs along the rocky shoreline -- more effort, more protein.',
+     diceInfo:'1 die: rolls 1-4 = wasted energy, zero points. Rolls 5-6 = absolute feast!',
      outcomes:[
-      {emoji:'&#x1F636;',title:'One Tiny Crab',body:"An hour of hunting for exactly one sad, small crab. Barely worth the energy spent.",pts:-5},
-      {emoji:'&#x1F980;',title:'CRAB FEAST!',body:"You catch FIVE crabs! A genuine island feast. You feel completely unstoppable.",pts:34}]},
-    {key:'C',risk:'high',text:"Eat the bright, beautiful berries deep in the jungle. They look absolutely incredible.",
-     diceInfo:"2 dice: bad (2-5) = POISONED! Mid (6-8) = weird feeling. Great (9-12) = SUPERFRUIT!",
+      {emoji:'&#x1F636;',title:'Nothing to Show',body:"An hour of hunting for exactly one tiny crab. Energy spent, nothing gained.",pts:0},
+      {emoji:'&#x1F980;',title:'CRAB FEAST!',body:"You catch FIVE crabs! A genuine island feast. You feel completely unstoppable.",pts:44}]},
+    {key:'C',risk:'high',text:'Eat the bright, beautiful berries deep in the jungle. They look incredible.',
+     diceInfo:'2 dice: DOUBLES=auto zero. Sum 3-7=BAD (-18pts). Sum 8-9=ok (+24pts). Sum 10-11=JACKPOT (+100pts)!',
      outcomes:[
       {emoji:'&#x1F922;',title:'POISONED!',body:"Those berries completely wrecked you. You lose an entire day recovering in agony on the beach.",pts:-18},
-      {emoji:'&#x1F610;',title:'Just OK',body:"Tasted weird and left a strange feeling. Not deadly, not great. You survived -- barely.",pts:12},
-      {emoji:'&#x2728;',title:'SUPERFRUIT!',body:"RARE tropical energy fruit! You feel like a superhuman. Best island discovery so far.",pts:52}]}
+      {emoji:'&#x1F610;',title:'Weird Feeling',body:"Tasted strange and left an odd feeling. Not great, not deadly. You survived this one.",pts:24},
+      {emoji:'&#x2728;',title:'SUPERFRUIT!',body:"RARE tropical energy fruit! You feel superhuman. Best possible find on this island.",pts:100}]}
   ]},
+  // INDEX 2: Stage 3 -- MINI-GAME 1 (no choices)
   {id:3,emoji:'&#x1F6A2;',title:'SIGNAL OR SURVIVE?',
-   scenario:"A boat appears on the horizon! This could be your ONLY rescue chance for weeks. It's moving fast and the gap is closing. You have MINUTES to get their attention -- and you're going to BUILD A FIRE!"},
+   scenario:"{NAME}, a boat appears on the horizon! This could be your ONLY rescue chance for weeks. You have MINUTES to get their attention -- and you're going to BUILD A SIGNAL FIRE!"},
+  // INDEX 3: Stage 4
   {id:4,emoji:'&#x26C8;',title:'THE STORM IS COMING',
-   scenario:"The sky turns ominous green-black. A massive tropical storm hits in 3 hours. Shelter in place, go deeper into the jungle, or attempt a daring escape right now?",
+   scenario:"{NAME}, the sky turns ominous green-black. A massive tropical storm is barreling toward the island -- hits in 3 hours. Shelter in place, go deeper into the jungle, or attempt a daring escape right now?",
    choices:[
-    {key:'A',risk:'low',text:"Reinforce your current shelter and stock up on supplies right now.",
-     outcomes:[{emoji:'&#x1F3E0;',title:'Fortress Held!',body:"Your shelter survives! When it clears, shipwreck supplies wash ashore directly in front of you.",pts:18}]},
-    {key:'B',risk:'med',text:"Go deeper into the jungle to find natural rock overhangs for protection.",
-     diceInfo:"1 die: bad (1-3) = lost and soaked. Good (4-6) = perfect shelter!",
+    {key:'A',risk:'low',text:'Reinforce your current shelter and stock up on supplies right now.',
+     outcomes:[{emoji:'&#x1F3E0;',title:'Fortress Held!',body:"Your shelter survives the storm! Shipwreck supplies even wash ashore directly in front of you.",pts:18}]},
+    {key:'B',risk:'med',text:'Go deeper into the jungle to find natural rock overhangs for protection.',
+     diceInfo:'1 die: rolls 1-4 = lost and soaked, zero points. Rolls 5-6 = perfect shelter!',
      outcomes:[
-      {emoji:'&#x1FAE3;',title:'Lost & Soaked',body:"Completely turned around in the jungle. Soaked to the bone before finding any cover at all.",pts:-8},
-      {emoji:'&#x1FAA8;',title:'PERFECT SHELTER!',body:"A stunning dry rock overhang, completely shielded from everything. Best sleep on the island.",pts:40}]},
+      {emoji:'&#x1FAE3;',title:'Lost All Night',body:"Completely turned around in the jungle and soaked to the bone. Gained nothing. Zero.",pts:0},
+      {emoji:'&#x1FAA8;',title:'PERFECT SHELTER!',body:"A stunning dry rock overhang, completely shielded from everything. Best sleep on the island.",pts:46}]},
     {key:'C',risk:'high',text:"Build an emergency raft and try to escape the island BEFORE the storm arrives.",
-     diceInfo:"2 dice: bad (2-5) = wrecked! Mid (6-8) = close call. Great (9-12) = LEGENDARY escape!",
+     diceInfo:'2 dice: DOUBLES=auto zero. Sum 3-7=BAD (-18pts). Sum 8-9=ok (+24pts). Sum 10-11=JACKPOT (+100pts)!',
      outcomes:[
-      {emoji:'&#x1F30A;',title:'WRECKED!',body:"Your raft breaks apart 50 meters out. Swept back to shore exhausted and lucky to be alive.",pts:-22},
-      {emoji:'&#x26F5;',title:'Close Call',body:"You make it out but the storm clips you hard. A coast guard vessel spots your distress signal.",pts:18},
-      {emoji:'&#x26F5;',title:'LEGENDARY ESCAPE!',body:"Your raft holds through everything! A coast guard vessel spots you just as the storm hits.",pts:60}]}
+      {emoji:'&#x1F30A;',title:'WRECKED!',body:"Your raft breaks apart 50 meters out. Swept violently back to shore, lucky to be alive.",pts:-18},
+      {emoji:'&#x26F5;',title:'Barely Made It',body:"You make it out but the storm clips you. A coast guard vessel spots your distress signal.",pts:24},
+      {emoji:'&#x26F5;',title:'LEGENDARY ESCAPE!',body:"Your raft holds through everything! A coast guard vessel spots you just as the storm hits. You are free!",pts:100}]}
   ]},
-  {id:5,emoji:'&#x1F681;',title:'THE FINAL CHANCE',
-   scenario:"A rescue helicopter is circling overhead! They're scanning hard but can't find you. Maybe 5 minutes before they give up forever. This is EVERYTHING on the line.",
+  // INDEX 4: Stage 5
+  {id:5,emoji:'&#x1F319;',title:'THE LONG NIGHT',
+   scenario:"{NAME}, it is pitch black and you hear strange sounds circling your camp. You can keep a full watch all night, sleep in short shifts, or explore the darkness looking for the source -- and possibly more supplies.",
    choices:[
-    {key:'A',risk:'low',text:"Use your watch or any shiny surface to reflect sunlight directly at the helicopter.",
-     outcomes:[{emoji:'&#x2728;',title:'Flash of Genius!',body:"They spot the glint! A boat is dispatched and you're going home. Clean, smart, RESCUED!",pts:20}]},
-    {key:'B',risk:'med',text:"Sprint to the nearest clearing and frantically clear debris to create a landing zone.",
-     diceInfo:"1 die: bad (1-3) = not enough space. Good (4-6) = perfect landing!",
+    {key:'A',risk:'low',text:'Sleep in shifts -- take turns resting so someone is always watching. Safe and smart.',
+     outcomes:[{emoji:'&#x1F4A4;',title:'Rested and Ready',body:"Smart rotation. You wake up feeling as good as you can on a volcanic island. Ready for day four.",pts:16}]},
+    {key:'B',risk:'med',text:'Stay fully awake all night keeping watch over the camp.',
+     diceInfo:'1 die: rolls 1-4 = exhausted for nothing, zero points. Rolls 5-6 = you spot something useful!',
      outcomes:[
-      {emoji:'&#x1F629;',title:'Too Dense',body:"You worked frantically but the clearing was not big enough. The helicopter circled once and flew on.",pts:-6},
-      {emoji:'&#x1F6EC;',title:'PERFECT LANDING!',body:"They spot your clearing and set down! The pilot shakes your hand. RESCUED!",pts:40}]},
+      {emoji:'&#x1F629;',title:'Dead Exhausted',body:"You kept watch all night and saw absolutely nothing. Completely drained. Zero benefit.",pts:0},
+      {emoji:'&#x1F50D;',title:'Sharp Eyes!',body:"Your vigilance paid off -- you spotted a supply crate washed up nearby before dawn. Big find!",pts:44}]},
+    {key:'C',risk:'high',text:"Explore the dark jungle to find the source of the sounds and potentially discover supplies.",
+     diceInfo:'2 dice: DOUBLES=auto zero. Sum 3-7=BAD (-18pts). Sum 8-9=ok (+24pts). Sum 10-11=JACKPOT (+100pts)!',
+     outcomes:[
+      {emoji:'&#x1F98A;',title:'BAD ENCOUNTER!',body:"You stumbled into something very unhappy in the dark. Scratched, shaken, and badly injured. Negative progress.",pts:-18},
+      {emoji:'&#x1F6B6;',title:'Wandered All Night',body:"Hours of searching turned up absolutely nothing. You return exhausted with nothing to show for it.",pts:24},
+      {emoji:'&#x1F381;',title:'TREASURE FIND!',body:"You discovered a washed-up emergency supply cache in a sea cave. First aid, food, tools -- incredible luck!",pts:100}]}
+  ]},
+  // INDEX 5: Stage 6
+  {id:6,emoji:'&#x1F4E6;',title:'THE SUPPLY DROP',
+   scenario:"{NAME}, a passing aircraft drops emergency supplies -- but they've scattered. Some landed close, one large crate sank just offshore in shallow water, and another heavier crate went deeper. What do you retrieve?",
+   choices:[
+    {key:'A',risk:'low',text:'Grab the supplies that landed right on the beach. No risk, right here.',
+     outcomes:[{emoji:'&#x1F4E6;',title:'Quick Win!',body:"Basic supplies secured -- food, water purification tablets, a small first aid kit. Solid.",pts:17}]},
+    {key:'B',risk:'med',text:'Wade out to the shallow crate just offshore. It might be worth something.',
+     diceInfo:'1 die: rolls 1-4 = current sweeps it away, zero points. Rolls 5-6 = excellent haul!',
+     outcomes:[
+      {emoji:'&#x1F4A6;',title:'Current Took It',body:"A sudden current swept the crate further out just as you reached it. Wasted the effort. Zero.",pts:0},
+      {emoji:'&#x1F31F;',title:'Excellent Haul!',body:"The crate had survival gear, energy bars, and a working flare gun. Huge upgrade to your supplies!",pts:44}]},
+    {key:'C',risk:'high',text:"Dive for the heavy crate that sank deeper offshore. It looked like the biggest one.",
+     diceInfo:'2 dice: DOUBLES=auto zero. Sum 3-7=BAD (-18pts). Sum 8-9=ok (+24pts). Sum 10-11=JACKPOT (+100pts)!',
+     outcomes:[
+      {emoji:'&#x1F635;',title:'Dangerous Dive!',body:"The depth and current were brutal. You barely made it back. No supplies and now seriously exhausted.",pts:-18},
+      {emoji:'&#x1F4EC;',title:'Something Inside',body:"The crate had a few minor supplies. Not the jackpot you were hoping for, but something.",pts:24},
+      {emoji:'&#x1F3C6;',title:'JACKPOT CRATE!',body:"FULL of top-tier emergency gear, including a working satellite beacon and medical kit! You changed the game!",pts:100}]}
+  ]},
+  // INDEX 6: Stage 7 -- MINI-GAME 2 (no choices)
+  {id:7,emoji:'&#x1F30B;',title:'THE VOLCANO RUMBLES',
+   scenario:"{NAME}, the volcano just erupted and a rescue plane is making ONE pass looking for survivors before the ash cloud closes in. You have ONE shot to fire your flare at the perfect moment!"},
+  // INDEX 7: Stage 8
+  {id:8,emoji:'&#x1F681;',title:'THE FINAL CHANCE',
+   scenario:"{NAME}, a rescue helicopter is circling overhead! They are scanning hard but cannot find you in the dense terrain. Maybe 5 minutes before they give up forever. This is EVERYTHING on the line.",
+   choices:[
+    {key:'A',risk:'low',text:'Use your watch face or any shiny surface to reflect sunlight directly at the helicopter.',
+     outcomes:[{emoji:'&#x2728;',title:'Flash of Genius!',body:"They spot the glint! A boat is dispatched and you are going home. Clean, smart, RESCUED!",pts:20}]},
+    {key:'B',risk:'med',text:'Sprint to the nearest clearing and frantically clear debris to create a landing zone.',
+     diceInfo:'1 die: rolls 1-4 = not enough room cleared, zero points. Rolls 5-6 = perfect landing!',
+     outcomes:[
+      {emoji:'&#x1F629;',title:'Not Enough Space',body:"You worked frantically but the clearing was not big enough. The helicopter circled once and flew on. Zero.",pts:0},
+      {emoji:'&#x1F6EC;',title:'PERFECT LANDING!',body:"They spot your clearing and set down! The pilot shakes your hand. RESCUED!",pts:46}]},
     {key:'C',risk:'high',text:"Dive into the ocean and swim hard toward where the helicopter is searching offshore.",
-     diceInfo:"2 dice: bad (2-5) = rip current. Mid (6-8) = saved anyway. Great (9-12) = CHAMPION!",
+     diceInfo:'2 dice: DOUBLES=auto zero. Sum 3-7=BAD (-18pts). Sum 8-9=ok (+24pts). Sum 10-11=JACKPOT (+100pts)!',
      outcomes:[
-      {emoji:'&#x1F30A;',title:'Current Got You',body:"A brutal rip current dragged you completely off course. You barely made it back. Helicopter gone.",pts:-16},
-      {emoji:'&#x1F605;',title:'Saved Anyway!',body:"A rescue swimmer had to jump in for you. Embarrassing. But RESCUED -- and alive counts.",pts:18},
-      {emoji:'&#x1F3CA;',title:'CHAMPION!',body:"You reach the search zone under your own power. The crew stares in disbelief. Legend. RESCUED!",pts:55}]}
+      {emoji:'&#x1F30A;',title:'Current Disaster',body:"A brutal rip current dragged you completely off course. Barely made it back to shore. Helicopter long gone.",pts:-18},
+      {emoji:'&#x1F605;',title:'Awkward Rescue',body:"A rescue swimmer had to jump in for you. Embarrassing. But RESCUED -- and alive is alive.",pts:24},
+      {emoji:'&#x1F3CA;',title:'SWIMMING LEGEND!',body:"You reach the search zone under your own power. The crew stares in total disbelief. RESCUED and legendary!",pts:100}]}
   ]}
 ];
 
+// ---- QUESTIONS (at stage indices 0,1,3,4,5,7) ----
 var QUESTIONS={
-  0:{text:"What does it mean to make a \"calculated risk\"?",correct:1,
-     opts:[
-      "Taking a chance without thinking about it at all",
-      "Weighing the possible gains against the possible losses before you decide",
-      "Choosing the option with the biggest reward, no matter what",
-      "Avoiding any situation that involves uncertainty"],
-     explain:"A calculated risk means you've thought it through -- you understand what you might gain AND what you might lose. It's the opposite of reckless."},
-  1:{text:"A student skips studying to play video games. The test is worth 40% of their grade. This decision is best described as:",correct:2,
-     opts:[
-      "A smart investment of free time",
-      "A low-risk choice with a guaranteed reward",
-      "A high-risk decision where the possible loss is much greater than the gain",
-      "A decision with no real consequences"],
-     explain:"The potential loss (40% of their grade) far outweighs the reward. That's a high-risk, low-reward situation -- the worst kind."},
-  3:{text:"Why might a smart character choose the SAFER option even when the risky one has a bigger possible reward?",correct:1,
-     opts:[
-      "Because safe options always give the best rewards in the end",
-      "Because a guaranteed smaller gain may be more valuable than an uncertain bigger one",
-      "Because risky choices never pay off in stories",
-      "Because the character is too scared to think clearly"],
-     explain:"This is the core trade-off. A guaranteed outcome has real value even if it is smaller -- because uncertainty cuts both ways."},
-  4:{text:"An author writes: 'She knew speaking up could ruin her reputation -- but staying silent would haunt her forever.' What concept does this BEST illustrate?",correct:2,
-     opts:[
-      "Foreshadowing about future events",
-      "The author's personal opinion on silence",
-      "The trade-off between taking a risk and avoiding one",
-      "The setting affecting the character's mood"],
-     explain:"The character is weighing a social risk (reputation) against the cost of inaction (regret). That's a classic risk vs. reward trade-off -- just not financial."}
+  0:{text:'What does it mean to make a "calculated risk"?',correct:1,
+     opts:['Taking a chance without thinking it through at all',
+           'Weighing the possible gains against the possible losses before you decide',
+           'Always choosing the option with the biggest possible reward',
+           'Avoiding any situation that involves uncertainty'],
+     explain:"A calculated risk means you've thought it through -- you understand what you might gain AND what you might lose before acting. It's the opposite of reckless."},
+  1:{text:'A student skips studying to play video games. The upcoming test is worth 40% of their grade. This decision is BEST described as:',correct:2,
+     opts:['A smart investment of their free time',
+           'A low-risk choice with a guaranteed reward',
+           'A high-risk decision where the possible loss far outweighs the gain',
+           'A decision with no real consequences either way'],
+     explain:"The potential loss (40% of their grade) is massive compared to the reward (a few hours of gaming). That is a high-risk, low-reward situation -- the worst possible combination."},
+  3:{text:'Why might a smart character in a story choose the SAFER option, even when a riskier one could pay off bigger?',correct:1,
+     opts:['Because safe options always produce the best results in the long run',
+           'Because a guaranteed smaller gain can be worth more than an uncertain larger one',
+           'Because risky choices never actually pay off in fiction or real life',
+           'Because the character does not have enough courage to take the risk'],
+     explain:"This is the core trade-off in risk vs. reward thinking. A guaranteed outcome has real value even if it is smaller -- because uncertainty cuts both ways and you might get nothing or worse."},
+  4:{text:'A character has a 1-in-4 chance of finding useful supplies if they explore at night, but a 3-in-4 chance of getting injured. The supplies are worth only a little. What does this BEST illustrate?',correct:2,
+     opts:['Any chance of a reward is worth taking, no matter the odds',
+           'The character should explore to demonstrate bravery and courage',
+           'When the probability of harm is much higher than the chance of reward, the risk is probably not worth it',
+           'Night exploration is always more dangerous than daytime exploration'],
+     explain:"When the odds of harm (75%) are much higher than the odds of reward (25%), AND the reward is small, the expected value is clearly negative. Smart risk-takers do the math before they leap."},
+  5:{text:'An investor puts ALL of their savings into one risky startup instead of spreading money across many different investments. This decision is most similar to which survival choice in this game?',correct:1,
+     opts:['Gathering coconuts -- safe and completely reliable',
+           'Eating the unknown jungle berries hoping they are not poisonous',
+           'Building a reinforced shelter before the storm arrives',
+           'Signaling for help from the beach by waving'],
+     explain:"Putting everything into one risky option -- with no backup and no spread -- mirrors eating the unknown berries. Both decisions bet everything on a single high-risk outcome with no safety net."},
+  7:{text:'An author writes: "She knew speaking up could end her career -- but staying silent meant watching someone get hurt." What concept does this BEST illustrate?',correct:2,
+     opts:['A character who is unable to make any decisions',
+           'Foreshadowing that hints at a future disaster in the story',
+           'The trade-off between taking a social risk and choosing the safer path of inaction',
+           'The way the setting creates conflict between characters'],
+     explain:"The character is weighing a serious social and professional risk (her career) against the moral cost of playing it safe (someone gets hurt). That is a classic risk vs. reward trade-off -- just not a financial one."}
+};
+
+// ---- PERSONALITY DATA ----
+var PDESC={
+  'THE DAREDEVIL':'You chased big rewards no matter the danger. Bold, fearless, and absolutely thrilling to watch -- even if it did not always pay off.',
+  'THE SAFE BET':'You played it smart and steady every time. Reliable, calculated, and almost never caught off-guard. The tortoise wins the race.',
+  'THE STRATEGIST':'You weighed every option carefully before committing. Balanced, thoughtful, and rarely surprised by outcomes.',
+  'THE WILD CARD':'Completely unpredictable -- sometimes cautious, sometimes reckless. Nobody, including you, knew what was coming next.',
+  'THE RISK-TAKER':'Not afraid to go big when the moment seemed right. Smart, bold, and confident under pressure -- even when the dice disagreed.',
+  'THE SURVIVOR':'Adaptable and resourceful. You read each situation on its own merits and responded accordingly. Pure instinct.'
 };
 
 // ---- STATE ----
-var S={room:'',avatar:'',stage:0,total:0,log:[],bonusEarned:0,qCorrect:0};
-var pendingChoice=null,pendingStagei=null,bonusDie=false,diceEff=0;
-var fireTimer=null,fireLeft=10,fireClicks=0,fireGoing=false;
+var S={name:'',stage:0,total:0,log:[],bonusEarned:0,qCorrect:0};
+var pendingChoice=null, pendingStagei=null, bonusDie=false, diceEff=0, isDoubles=false;
+var fireTimer=null, fireLeft=10, fireClicks=0, fireGoing=false;
+var flareTimer=null, flarePos=0, flareFired=false, flareGoing=false;
 
 // ---- HELPERS ----
 function showScreen(id){
@@ -563,17 +726,16 @@ function rp(idx,tid){
 
 var RM={
   low: {color:'var(--low)',w:'33%',hint:'&#x1F7E2; Safe -- guaranteed result'},
-  med: {color:'var(--med)',w:'66%',hint:'&#x1F3B2; 1 die decides your fate'},
-  high:{color:'var(--high)',w:'100%',hint:'&#x1F3B2;&#x1F3B2; 2 dice -- big swings!'}
+  med: {color:'var(--med)',w:'66%',hint:'&#x1F3B2; 1 die (1-4 = zero pts!)'},
+  high:{color:'var(--high)',w:'100%',hint:'&#x1F3B2;&#x1F3B2; 2 dice -- doubles = auto zero!'}
 };
 
 // ---- SETUP ----
 function startGame(){
-  var room=document.getElementById('inp-room').value.trim();
-  var avatar=document.getElementById('inp-avatar').value.trim();
-  if(!room||!avatar){document.getElementById('setup-err').style.display='block';return;}
+  var name=document.getElementById('inp-name').value.trim();
+  if(!name){document.getElementById('setup-err').style.display='block';return;}
   document.getElementById('setup-err').style.display='none';
-  S={room:room,avatar:avatar,stage:0,total:0,log:[],bonusEarned:0,qCorrect:0};
+  S={name:name,stage:0,total:0,log:[],bonusEarned:0,qCorrect:0};
   loadStage(0);
 }
 
@@ -581,30 +743,56 @@ function startGame(){
 function loadStage(idx){
   S.stage=idx;
   var st=STAGES[idx];
+  var scen=st.scenario.replace('{NAME}', S.name);
+
+  // MINI-GAME 1 (index 2)
   if(idx===2){
     pendingStagei=2;
-    pendingChoice={key:'Fire',risk:'med',text:'Built a signal fire (mini-game)',isMinigame:true};
+    pendingChoice={key:'Fire',risk:'med',text:'Built a signal fire (mini-game)',isMinigame:true,mini:1};
     rp(2,'pw-stage');
-    document.getElementById('st-num').textContent='Stage 3 of 5';
+    document.getElementById('st-num').textContent='Stage 3 of 8';
     document.getElementById('st-emoji').innerHTML=st.emoji;
     document.getElementById('st-title').textContent=st.title;
-    document.getElementById('st-scen').textContent=st.scenario;
+    document.getElementById('st-scen').textContent=scen;
     document.getElementById('cstack').innerHTML=
       '<div style="margin-top:8px">'+
       '<div style="background:rgba(255,70,0,.10);border:2px solid rgba(255,70,0,.5);border-radius:14px;padding:24px 22px;text-align:center">'+
       '<div style="font-size:3rem;margin-bottom:10px">&#x1F525;</div>'+
-      '<div style="font-family:\'Cinzel Decorative\',serif;font-size:1.25rem;color:var(--gold);margin-bottom:10px">MINI-GAME: BUILD THE SIGNAL FIRE!</div>'+
-      '<p style="color:#cbb890;font-style:italic;font-size:.95rem;line-height:1.7;margin-bottom:20px">No choices this time &mdash; <strong style="color:var(--ember);font-style:normal">everyone plays!</strong><br>Click as fast as you can to build the fire before the boat disappears!<br>Bigger fire = more survival points!</p>'+
-      '<button class="btn btnf" onclick="prepMini()" style="width:100%">&#x1F525; &nbsp;Launch the Challenge!</button>'+
+      '<div style="font-family:\'Cinzel Decorative\',serif;font-size:1.2rem;color:var(--gold);margin-bottom:10px">MINI-GAME 1: SIGNAL FIRE!</div>'+
+      '<p style="color:#cbb890;font-style:italic;font-size:.95rem;line-height:1.7;margin-bottom:20px">No choices this time, <strong style="color:var(--ember);font-style:normal">'+S.name+' -- everyone plays!</strong><br>Click as fast as you can to build the fire before the boat disappears!<br>Bigger fire = more survival points.</p>'+
+      '<button class="btn btnf" onclick="prepMini1()" style="width:100%">&#x1F525; &nbsp;Launch the Fire Challenge!</button>'+
       '</div></div>';
     showScreen('s-stage');
     return;
   }
+
+  // MINI-GAME 2 (index 6)
+  if(idx===6){
+    pendingStagei=6;
+    pendingChoice={key:'Flare',risk:'med',text:'Fired rescue flare (mini-game)',isMinigame:true,mini:2};
+    rp(6,'pw-stage');
+    document.getElementById('st-num').textContent='Stage 7 of 8';
+    document.getElementById('st-emoji').innerHTML=st.emoji;
+    document.getElementById('st-title').textContent=st.title;
+    document.getElementById('st-scen').textContent=scen;
+    document.getElementById('cstack').innerHTML=
+      '<div style="margin-top:8px">'+
+      '<div style="background:rgba(91,47,190,.15);border:2px solid rgba(91,47,190,.5);border-radius:14px;padding:24px 22px;text-align:center">'+
+      '<div style="font-size:3rem;margin-bottom:10px">&#x1F386;</div>'+
+      '<div style="font-family:\'Cinzel Decorative\',serif;font-size:1.2rem;color:var(--gold);margin-bottom:10px">MINI-GAME 2: RESCUE FLARE!</div>'+
+      '<p style="color:#cbb890;font-style:italic;font-size:.95rem;line-height:1.7;margin-bottom:20px">No choices, <strong style="color:var(--ember);font-style:normal">'+S.name+' -- everyone plays!</strong><br>A rescue plane makes ONE pass. Fire your flare when it enters the golden zone!<br>Timing is everything -- hit the perfect spot for maximum points.</p>'+
+      '<button class="btn btnf" onclick="prepMini2()" style="width:100%">&#x1F386; &nbsp;Launch the Flare Challenge!</button>'+
+      '</div></div>';
+    showScreen('s-stage');
+    return;
+  }
+
+  // Normal stage
   rp(idx,'pw-stage');
   document.getElementById('st-num').textContent='Stage '+st.id+' of '+STAGES.length;
   document.getElementById('st-emoji').innerHTML=st.emoji;
   document.getElementById('st-title').textContent=st.title;
-  document.getElementById('st-scen').textContent=st.scenario;
+  document.getElementById('st-scen').textContent=scen;
   var stack=document.getElementById('cstack');
   stack.innerHTML='';
   for(var ci=0;ci<st.choices.length;ci++){
@@ -651,11 +839,11 @@ function showQuestion(stagei){
   wrap.innerHTML='';
   var keys=['A','B','C','D'];
   for(var i=0;i<q.opts.length;i++){
-    (function(idx,optText){
+    (function(idx2,optText){
       var btn=document.createElement('button');
       btn.className='qopt';
-      btn.innerHTML='<span class="qoptkey">'+keys[idx]+')</span><span>'+optText+'</span>';
-      btn.addEventListener('click',function(){answerQ(idx===q.correct,q.explain,stagei,this);});
+      btn.innerHTML='<span class="qoptkey">'+keys[idx2]+')</span><span>'+optText+'</span>';
+      btn.addEventListener('click',function(){answerQ(idx2===q.correct,q.explain,stagei,this);});
       wrap.appendChild(btn);
     })(i,q.opts[i]);
   }
@@ -666,7 +854,6 @@ function answerQ(correct,explain,stagei,clicked){
   var opts=document.querySelectorAll('.qopt');
   for(var i=0;i<opts.length;i++) opts[i].classList.add('dimmed');
   var q=QUESTIONS[stagei];
-  // highlight correct
   var allOpts=document.querySelectorAll('.qopt');
   for(var i=0;i<allOpts.length;i++){
     if(i===q.correct){
@@ -682,13 +869,13 @@ function answerQ(correct,explain,stagei,clicked){
   var cont=document.getElementById('q-cont');
   var bd=document.getElementById('q-bonus-disp');
   if(correct){
-    bonusDie=true;S.bonusEarned++;S.qCorrect++;
+    bonusDie=true; S.bonusEarned++; S.qCorrect++;
     fb.className='qfb cor';
-    fb.innerHTML='<strong>Correct!</strong> '+explain;
+    fb.innerHTML='<strong>Correct, '+S.name+'!</strong> '+explain;
     bd.innerHTML='<span class="bpill">&#x1F3B2; BONUS DIE EARNED!</span>';
   } else {
     fb.className='qfb wrg';
-    fb.innerHTML='<strong>Not quite.</strong> '+explain;
+    fb.innerHTML='<strong>Not quite, '+S.name+'.</strong> '+explain;
     bd.innerHTML='<span style="font-family:\'Cinzel\',serif;font-size:.8rem;letter-spacing:2px;color:#ff8a8a">No bonus this time -- roll what you\'ve got!</span>';
   }
   fb.style.display='block';
@@ -702,12 +889,17 @@ function prepDice(stagei,ch){
   var base=ch.risk==='med'?1:2;
   var total=bonusDie?base+1:base;
   rp(stagei,'pw-dice');
+  document.getElementById('dice-namebadge').textContent='Survivor: '+S.name;
   document.getElementById('dice-label').textContent='Stage '+(stagei+1)+' -- '+STAGES[stagei].title;
-  var dh='&#x1F3B2;'.repeat(total)+' Roll '+(total===1?'The Die!':'The Dice!');
-  document.getElementById('dice-header').innerHTML=dh;
+  var heads=['','&#x1F3B2; Roll The Die!','&#x1F3B2;&#x1F3B2; Roll The Dice!','&#x1F3B2;&#x1F3B2;&#x1F3B2; Roll Three Dice!'];
+  document.getElementById('dice-header').innerHTML=heads[total]||heads[total];
   var banner=document.getElementById('dice-banner');
   if(bonusDie) banner.classList.add('show'); else banner.classList.remove('show');
   document.getElementById('dice-info').textContent=ch.diceInfo||'The dice determine your fate!';
+  // Show doubles warning only for high risk without bonus die
+  var dbl=document.getElementById('doubles-rule-note');
+  if(ch.risk==='high'&&!bonusDie) dbl.style.display='block'; else dbl.style.display='none';
+  document.getElementById('doubles-banner').classList.remove('show');
   var dcon=document.getElementById('dcon');
   dcon.innerHTML='';
   for(var i=0;i<total;i++){
@@ -743,36 +935,58 @@ function rollDice(){
       for(var i=0;i<boxes.length;i++){
         boxes[i].classList.remove('rolling');
         boxes[i].textContent=finals[i];
-        (function(b){setTimeout(function(){b.classList.add('settled');},i*120);})(boxes[i]);
+        (function(b){ setTimeout(function(){b.classList.add('settled');},i*120); })(boxes[i]);
       }
-      var effTotal,label,tag,cls;
+      // --- COMPUTE EFFECTIVE ROLL ---
+      var effTotal, label, tag, cls;
+      isDoubles=false;
+
       if(ch.risk==='med'){
-        if(bonusDie){
-          effTotal=Math.max(finals[0],finals[1]);
-          label=finals[0]+' vs '+finals[1]+' -- use '+effTotal;
-        } else {
-          effTotal=finals[0];
-          label=String(finals[0]);
-        }
-        if(effTotal<=3){tag='Bad luck -- low roll!';cls='lbad';}
-        else{tag='Good roll!';cls='lgood';}
+        // MED: 1 die. No bonus: <=4 bad (67%). With bonus: threshold shifts to <=3 (50% bad).
+        effTotal=finals[0];
+        label=String(finals[0]);
+        var badThreshold=bonusDie?3:4;
+        if(effTotal<=badThreshold){ tag=S.name+', bad luck -- that is a losing roll!'; cls='lbad'; }
+        else { tag='Good roll, '+S.name+'!'; cls='lgood'; }
+        if(bonusDie){ label=String(finals[0])+' (bonus: bad threshold is 1-3 instead of 1-4)'; }
+
       } else {
-        var used=finals.slice();
-        if(bonusDie){
-          used.sort(function(a,b){return a-b;});
-          var dropped=used[0];
-          used=used.slice(1);
-          effTotal=used[0]+used[1];
-          label=finals.join(' + ')+' -- drop '+dropped+' -- sum '+used[0]+'+'+used[1]+'='+effTotal;
+        // HIGH RISK: 2 dice always. DOUBLES = auto zero.
+        // Bonus die benefit: ONE reroll on doubles only. Non-doubles odds unchanged.
+        var rA=finals[0], rB=finals[1];
+        if(rA===rB && bonusDie){
+          // Bonus die: reroll both once on doubles
+          rA=Math.floor(Math.random()*6)+1;
+          rB=Math.floor(Math.random()*6)+1;
+          label='DOUBLES rerolled! -- '+rA+' + '+rB;
         } else {
-          effTotal=finals[0]+finals[1];
-          label=finals[0]+' + '+finals[1]+' = '+effTotal;
+          label=rA+' + '+rB+(rA+rB>2?' = '+(rA+rB):'');
         }
-        if(effTotal<=5){tag='Terrible luck -- disaster incoming!';cls='lbad';}
-        else if(effTotal<=8){tag='Decent roll -- could go either way.';cls='lok';}
-        else{tag='Amazing roll -- fortune is on your side!';cls='lgood';}
+        if(rA===rB){
+          // Still doubles after reroll (or no bonus)
+          isDoubles=true;
+          effTotal=0;
+          label='DOUBLES ('+rA+' + '+rB+') -- AUTO ZERO';
+          tag='DOUBLES -- automatic zero, '+S.name+'!';
+          cls='lbad';
+          for(var i=0;i<boxes.length;i++){
+            boxes[i].classList.remove('settled');
+            boxes[i].classList.add('doubles-settled');
+          }
+          setTimeout(function(){
+            document.getElementById('doubles-banner').classList.add('show');
+          },400);
+        } else {
+          effTotal=rA+rB;
+          label=rA+' + '+rB+' = '+effTotal+(bonusDie&&finals[0]===finals[1]?' (rerolled doubles)':'');
+          if(effTotal<=7){ tag='Low total, '+S.name+'. Rough luck.'; cls='lbad'; }
+          else if(effTotal<=9){ tag='Decent roll, '+S.name+'.'; cls='lok'; }
+          else { tag='Amazing roll, '+S.name+'! Fortune favors you!'; cls='lgood'; }
+        }
       }
+
       diceEff=effTotal;
+      var delay=isDoubles?900:500;
       setTimeout(function(){
         document.getElementById('dtotalnum').textContent=label;
         document.getElementById('dlucktag').textContent=tag;
@@ -780,29 +994,34 @@ function rollDice(){
         document.getElementById('dtotalwrap').style.display='block';
         document.getElementById('dice-roll-btn').style.display='none';
         document.getElementById('dice-rev-btn').style.display='block';
-      },500);
+      },delay);
     }
   },80);
 }
 
 function revealOutcome(){
-  var ch=pendingChoice,t=diceEff;
+  var ch=pendingChoice;
   var outcome;
-  if(ch.risk==='med'){
-    outcome=t<=3?ch.outcomes[0]:ch.outcomes[1];
+  if(isDoubles){
+    outcome={emoji:'&#x1F3B2;',title:'DOUBLES -- Zero Points!',
+      body:S.name+", rolling doubles means automatic zero. That's the brutal reality of high risk.",pts:0};
+  } else if(ch.risk==='med'){
+    outcome=diceEff<=4?ch.outcomes[0]:ch.outcomes[1];
   } else {
-    if(t<=5) outcome=ch.outcomes[0];
-    else if(t<=8) outcome=ch.outcomes[1];
+    // high risk: sum 3-7=bad, 8-9=ok, 10-11=great
+    if(diceEff<=7) outcome=ch.outcomes[0];
+    else if(diceEff<=9) outcome=ch.outcomes[1];
     else outcome=ch.outcomes[2];
   }
   showOutcome(outcome,pendingStagei);
 }
 
-// ---- MINIGAME ----
-function prepMini(){
-  rp(2,'pw-mini');
-  fireClicks=0;fireLeft=10;fireGoing=false;
+// ---- MINI 1: FIRE ----
+function prepMini1(){
+  rp(2,'pw-mini1');
+  fireClicks=0; fireLeft=10; fireGoing=false;
   if(fireTimer){clearInterval(fireTimer);fireTimer=null;}
+  document.getElementById('fire-name-tag').textContent=S.name;
   document.getElementById('tnum').textContent='10';
   document.getElementById('tcircle').classList.remove('urgent');
   document.getElementById('fvis').innerHTML='&#x1FAB5;';
@@ -813,14 +1032,14 @@ function prepMini(){
   document.getElementById('ftier').textContent='--';
   document.getElementById('fbtn').disabled=false;
   document.getElementById('fbtn').innerHTML='&#x1F525; ADD WOOD!';
-  document.getElementById('mini-start').style.display='block';
-  document.getElementById('mini-startbtn').disabled=false;
-  showScreen('s-mini');
+  document.getElementById('mini1-start').style.display='block';
+  document.getElementById('mini1-startbtn').disabled=false;
+  showScreen('s-mini1');
 }
 
 function startFire(){
   fireGoing=true;
-  document.getElementById('mini-start').style.display='none';
+  document.getElementById('mini1-start').style.display='none';
   document.getElementById('flvl').textContent='Click! Click! CLICK!!!';
   fireTimer=setInterval(function(){
     fireLeft--;
@@ -837,11 +1056,11 @@ function clickFire(e){
   document.getElementById('ffill').style.width=Math.min(100,(fireClicks/95)*100)+'%';
   document.getElementById('fclicks').textContent=fireClicks;
   var vis,lvl,tier;
-  if(fireClicks<26)      {vis='&#x1FAB5;';lvl='Tiny Smoke...';tier='&#x1F4A8;';}
-  else if(fireClicks<46) {vis='&#x1F525;';lvl='Small Flicker!';tier='&#x1F525;';}
-  else if(fireClicks<66) {vis='&#x1F525;&#x1F525;';lvl='Growing Fire!';tier='&#x1F525;&#x1F525;';}
-  else if(fireClicks<90) {vis='&#x1F525;&#x1F525;&#x1F525;';lvl='RAGING BLAZE!!!';tier='&#x1F525;&#x1F525;&#x1F525;';}
-  else                   {vis='&#x1F30B;&#x1F525;&#x1F30B;';lvl='VOLCANO INFERNO!!!';tier='&#x1F4A5;';}
+  if(fireClicks<26)      {vis='&#x1FAB5;';       lvl='Tiny Smoke...';     tier='&#x1F4A8;';}
+  else if(fireClicks<46) {vis='&#x1F525;';        lvl='Small Flicker!';   tier='&#x1F525;';}
+  else if(fireClicks<66) {vis='&#x1F525;&#x1F525;';     lvl='Growing Fire!';    tier='&#x1F525;&#x1F525;';}
+  else if(fireClicks<90) {vis='&#x1F525;&#x1F525;&#x1F525;'; lvl='RAGING BLAZE!!!'; tier='&#x1F525;&#x1F525;&#x1F525;';}
+  else                   {vis='&#x1F30B;&#x1F525;&#x1F30B;'; lvl='VOLCANO INFERNO!!!'; tier='&#x1F4A5;';}
   document.getElementById('fvis').innerHTML=vis;
   document.getElementById('fvis').style.fontSize=Math.min(5.5,3+(fireClicks/95)*2.5)+'rem';
   document.getElementById('flvl').textContent=lvl;
@@ -853,32 +1072,127 @@ function endFire(){
   document.getElementById('fbtn').textContent="Time's Up!";
   document.getElementById('tcircle').classList.remove('urgent');
   var pts,title,emoji,body;
-  if(fireClicks<26)      {pts=5; title='Barely a Flicker'; emoji='&#x1F4A8;';body='Your tiny wisp of smoke was invisible from the water. The boat sailed past without noticing.';}
-  else if(fireClicks<46) {pts=18;title='Small Signal';      emoji='&#x1F525;';body='A small fire -- not massive, but visible enough. The boat hesitated and turned slightly toward the island!';}
-  else if(fireClicks<66) {pts=32;title='REAL FIRE!';         emoji='&#x1F525;&#x1F525;';body='A proper signal fire! The smoke column rises clearly. The boat changes course and heads your way!';}
-  else if(fireClicks<90) {pts=46;title='RAGING BLAZE!';     emoji='&#x1F525;&#x1F525;&#x1F525;';body='Your massive fire is visible for miles! The boat turns immediately and radios for backup!';}
-  else                   {pts=60;title='VOLCANO INFERNO!';  emoji='&#x1F30B;&#x1F525;&#x1F30B;';body='Your fire rivals the volcano itself! THREE boats spot it at once. You are officially a legend.';}
+  if(fireClicks<26)      {pts=5; title='Barely a Flicker';   emoji='&#x1F4A8;'; body='Your tiny wisp of smoke was invisible from the water. The boat sailed past without noticing.';}
+  else if(fireClicks<46) {pts=18;title='Small Signal';        emoji='&#x1F525;'; body='A small fire -- not massive, but visible enough. The boat hesitated and turned slightly toward the island!';}
+  else if(fireClicks<66) {pts=32;title='REAL FIRE!';           emoji='&#x1F525;&#x1F525;'; body='A proper signal fire! The smoke column rises clearly. The boat changes course and heads your way!';}
+  else if(fireClicks<90) {pts=46;title='RAGING BLAZE!';       emoji='&#x1F525;&#x1F525;&#x1F525;'; body='Your massive fire is visible for miles! The boat turns immediately and radios for backup!';}
+  else                   {pts=60;title='VOLCANO INFERNO!';    emoji='&#x1F30B;&#x1F525;&#x1F30B;'; body='Your fire rivals the volcano itself! THREE boats spot it at once. You are officially a legend.';}
   setTimeout(function(){showOutcome({emoji:emoji,title:title,body:body,pts:pts},pendingStagei);},900);
+}
+
+// ---- MINI 2: FLARE TIMING ----
+function prepMini2(){
+  rp(6,'pw-mini2');
+  flarePos=0; flareFired=false; flareGoing=false;
+  if(flareTimer){clearInterval(flareTimer);flareTimer=null;}
+  document.getElementById('flare-name-tag').textContent=S.name;
+  document.getElementById('flare-plane').style.left='0%';
+  document.getElementById('flare-marker').style.display='none';
+  document.getElementById('flare-status').textContent='Waiting for the plane...';
+  document.getElementById('acc-fill').style.width='0%';
+  document.getElementById('flare-btn').disabled=true;
+  document.getElementById('mini2-start').style.display='block';
+  document.getElementById('mini2-startbtn').disabled=false;
+  showScreen('s-mini2');
+}
+
+function startFlare(){
+  document.getElementById('mini2-start').style.display='none';
+  document.getElementById('flare-btn').disabled=false;
+  flareGoing=true;
+  flareFired=false;
+  var startTime=Date.now();
+  var duration=4200; // 4.2 seconds to cross
+  flareTimer=setInterval(function(){
+    var elapsed=Date.now()-startTime;
+    flarePos=(elapsed/duration)*100;
+    if(flarePos>=100){
+      flarePos=100;
+      clearInterval(flareTimer); flareTimer=null;
+      document.getElementById('flare-plane').style.left='98%';
+      if(!flareFired) endFlare();
+      return;
+    }
+    document.getElementById('flare-plane').style.left=flarePos+'%';
+    // Update status
+    if(flarePos<32) document.getElementById('flare-status').textContent='Plane approaching... wait for it!';
+    else if(flarePos<38) document.getElementById('flare-status').textContent='Almost in the zone...';
+    else if(flarePos<65) document.getElementById('flare-status').textContent='IN THE ZONE -- FIRE NOW!';
+    else if(flarePos<72) document.getElementById('flare-status').textContent='Leaving the zone...';
+    else document.getElementById('flare-status').textContent='Too late... plane is passing!';
+  },30);
+}
+
+function fireFlare(){
+  if(!flareGoing||flareFired) return;
+  flareFired=true;
+  clearInterval(flareTimer); flareTimer=null;
+  document.getElementById('flare-btn').disabled=true;
+  // Show hit marker
+  var marker=document.getElementById('flare-marker');
+  marker.style.left=flarePos+'%';
+  marker.style.display='block';
+  endFlare();
+}
+
+function endFlare(){
+  document.getElementById('flare-btn').disabled=true;
+  var pos=flarePos;
+  var distFromCenter=Math.abs(pos-50);
+  var pts,title,emoji,body,acc;
+  if(!flareFired||pos<32||pos>72){
+    pts=0; acc=0;
+    title='MISSED!';
+    emoji='&#x1F4A8;';
+    body=S.name+', your flare shot wide or fired too late. The plane flew on without seeing anything. Zero points.';
+  } else if(distFromCenter>18){
+    pts=14; acc=30;
+    title='Edge of the Zone';
+    emoji='&#x1F4A1;';
+    body='The flare went up but barely clipped the edge of the pilot\'s view. They radioed in a possible sighting but kept flying.';
+  } else if(distFromCenter>8){
+    pts=32; acc=65;
+    title='Good Shot, '+S.name+'!';
+    emoji='&#x2728;';
+    body='The flare lit up the sky well within view! The plane banks hard and calls for a rescue team to your location!';
+  } else {
+    pts=55; acc=100;
+    title='PERFECT SHOT!';
+    emoji='&#x1F386;';
+    body='DEAD CENTER! The flare explodes right in front of the cockpit. The pilot lands immediately on the nearest clear ground. RESCUED!';
+  }
+  document.getElementById('acc-fill').style.width=acc+'%';
+  document.getElementById('flare-status').textContent=title;
+  setTimeout(function(){showOutcome({emoji:emoji,title:title,body:body,pts:pts},pendingStagei);},1200);
 }
 
 // ---- OUTCOME ----
 function showOutcome(outcome,stagei){
-  S.total=Math.max(0,S.total+outcome.pts);
+  S.total=S.total+outcome.pts;
   var ch=pendingChoice;
-  var logText=ch.isMinigame?'Built signal fire ('+fireClicks+' clicks)':ch.text;
-  S.log.push({stagei:stagei+1,stageTitle:STAGES[stagei].title,text:logText,risk:ch.isMinigame?'med':ch.risk,pts:outcome.pts,bonus:bonusDie&&!ch.isMinigame});
+  var logText;
+  if(ch.isMinigame && ch.mini===1) logText='Fire mini-game ('+fireClicks+' clicks)';
+  else if(ch.isMinigame && ch.mini===2) logText='Flare mini-game (pos '+Math.round(flarePos)+'%)';
+  else logText=ch.text;
+  S.log.push({stagei:stagei+1,text:logText,risk:ch.isMinigame?'med':ch.risk,pts:outcome.pts,bonus:bonusDie&&!ch.isMinigame,doubles:isDoubles});
   rp(stagei,'pw-out');
   document.getElementById('o-em').innerHTML=outcome.emoji;
   document.getElementById('o-head').textContent=outcome.title;
   document.getElementById('o-body').textContent=outcome.body;
-  var pos=outcome.pts>=0;
-  document.getElementById('o-pts').innerHTML='<div style="text-align:center;margin-bottom:16px"><span class="ppill '+(pos?'pup':'pdn')+'">'+(pos?'+':'')+outcome.pts+' points</span></div>';
-  document.getElementById('o-total').textContent=S.total+' pts';
+  var pos=outcome.pts>0, zero=outcome.pts===0;
+  var pillCls=pos?'pup':zero?'pze':'pdn';
+  var sign=pos?'+':zero?'':'';
+  document.getElementById('o-pts').innerHTML='<div style="text-align:center;margin-bottom:16px"><span class="ppill '+pillCls+'">'+sign+outcome.pts+' points</span></div>';
+  var totalEl=document.getElementById('o-total');
+  totalEl.textContent=S.total+' pts';
+  totalEl.style.color=S.total<0?'var(--high)':'var(--gold)';
   document.getElementById('next-btn').textContent=stagei>=STAGES.length-1?'See My Results!':'Continue';
   showScreen('s-outcome');
 }
 
 function nextStage(){
+  // reset doubles flag
+  isDoubles=false;
   var n=S.stage+1;
   if(n>=STAGES.length) showSummary(); else loadStage(n);
 }
@@ -887,45 +1201,50 @@ function nextStage(){
 function getPers(){
   var c={low:0,med:0,high:0};
   for(var i=0;i<S.log.length;i++) c[S.log[i].risk]++;
-  if(c.high>=4) return'THE DAREDEVIL';
-  if(c.low>=4)  return'THE SAFE BET';
-  if(c.med>=3)  return'THE STRATEGIST';
-  if(c.high>=2&&c.low>=2) return'THE WILD CARD';
-  if(c.high>=2) return'THE RISK-TAKER';
+  if(c.high>=5) return'THE DAREDEVIL';
+  if(c.low>=5)  return'THE SAFE BET';
+  if(c.med>=4)  return'THE STRATEGIST';
+  if(c.high>=3&&c.low>=2) return'THE WILD CARD';
+  if(c.high>=3) return'THE RISK-TAKER';
   return'THE SURVIVOR';
 }
-var PDESC={
-  'THE DAREDEVIL':'You chase big rewards no matter the danger. Bold, thrilling, always up for a wild ride!',
-  'THE SAFE BET':'You play it smart and steady. Reliable, calculated, almost never caught off-guard.',
-  'THE STRATEGIST':'You weigh every option carefully. Balanced, thoughtful, and rarely surprised.',
-  'THE WILD CARD':'Completely unpredictable -- sometimes cautious, sometimes fearless. Nobody knows what you will do next!',
-  'THE RISK-TAKER':'Not afraid to go big when the moment is right. Smart, bold, and confident under pressure.',
-  'THE SURVIVOR':'Adaptable and resourceful. You read each situation and respond -- pure survival instinct.'
-};
+
 function getTier(score){
-  if(score>=165) return{title:'LEGENDARY SURVIVOR',tier:'LEGENDARY',verdict:'Absolutely extraordinary. Every decision was sharp, bold, and brilliant. The island never stood a chance.'};
-  if(score>=120) return{title:'SEASONED EXPLORER', tier:'SEASONED', verdict:'You navigated this island with real skill and smart decisions. A few bumps, but nothing stopped you.'};
-  if(score>=75)  return{title:'RESOURCEFUL CASTAWAY',tier:'RESOURCEFUL',verdict:'Solid instincts and a few lucky breaks. Not every choice paid off, but you never quit. That counts.'};
-  if(score>=30)  return{title:'RECKLESS WANDERER', tier:'RECKLESS', verdict:'Wild ride. Some choices paid off, some really did not. But you survived -- and that is sometimes the whole point.'};
-  return             {title:'BARELY MADE IT',     tier:'BARELY',  verdict:'The island won most battles, but you won the war. Survived against serious odds.'};
+  if(score>=380) return{title:'&#x1F3C6; LEGENDARY SURVIVOR',tier:'LEGENDARY',verdict:'Absolutely extraordinary, '+S.name+'. You chased the biggest risks and the island rewarded you massively. A once-in-a-lifetime run.'};
+  if(score>=250) return{title:'&#x2694; SEASONED EXPLORER',tier:'SEASONED',verdict:S.name+', you made bold decisions and backed them up with results. Several big swings paid off. Genuinely impressive.'};
+  if(score>=160) return{title:'&#x1F9ED; RESOURCEFUL CASTAWAY',tier:'RESOURCEFUL',verdict:S.name+', you played it smart and steady. Your safe choices kept you in the game even when others crashed out.'};
+  if(score>=80)  return{title:'&#x1F33F; RECKLESS WANDERER',tier:'RECKLESS',verdict:'Wild ride, '+S.name+'. You rolled the dice hard but the luck did not follow. That is what high risk really means.'};
+  if(score>=0)   return{title:'&#x1F480; BARELY MADE IT',tier:'BARELY',verdict:S.name+', the high-risk path punished you hard. But you survived -- and now you know exactly what real risk feels like.'};
+  return             {title:'&#x1F4C9; IN THE RED',tier:'NEGATIVE',verdict:S.name+', you ended up BELOW ZERO. The island took more than it gave. This is the brutal reality of uncalculated risk -- you can finish worse than when you started.'};
 }
 
 // ---- SUMMARY ----
 function showSummary(){
-  var p=getPers(),t=getTier(S.total);
-  document.getElementById('sum-title').textContent='&#x1F3C6; '+t.title;
-  document.getElementById('sum-surv').textContent=S.avatar.toUpperCase()+' -- ROOM '+S.room;
-  document.getElementById('sum-score').textContent=S.total+' pts';
+  var p=getPers(), t=getTier(S.total);
+  document.getElementById('sum-title').innerHTML=t.title;
+  document.getElementById('sum-surv').textContent=S.name.toUpperCase()+"'S SURVIVAL REPORT";
+  var scoreEl=document.getElementById('sum-score');
+  scoreEl.textContent=S.total+' pts';
+  scoreEl.style.color=S.total<0?'var(--high)':'var(--gold)';
   document.getElementById('sum-tier').textContent=t.tier;
-  document.getElementById('sum-room').textContent='Room '+S.room;
+  document.getElementById('sum-name').textContent=S.name;
   document.getElementById('sum-pers').textContent=p;
   document.getElementById('sum-bonus').textContent=S.bonusEarned+' dice';
-  document.getElementById('sum-qc').textContent=S.qCorrect+' / 4';
+  document.getElementById('sum-qc').textContent=S.qCorrect+' / 6';
   var loghtml='';
   for(var i=0;i<S.log.length;i++){
     var l=S.log[i];
     var rcls=l.risk==='low'?'rtl':l.risk==='med'?'rtm':'rth';
-    loghtml+='<div class="lrow"><span class="lsnum">Stage '+l.stagei+'</span><span class="lctext">'+l.text+(l.bonus?' (bonus die)':'')+'</span><span class="rtag '+rcls+'">'+l.risk.toUpperCase()+'</span><span class="lpts" style="color:'+(l.pts>=0?'var(--low)':'var(--high)')+'">'+(l.pts>=0?'+':'')+l.pts+'</span></div>';
+    var extras='';
+    if(l.bonus) extras+=' +bonus';
+    if(l.doubles) extras+=' DOUBLES';
+    loghtml+='<div class="lrow">'+
+      '<span class="lsnum">Stage '+l.stagei+'</span>'+
+      '<span class="lctext">'+l.text+(extras?'<em style="color:var(--sand)"> ('+extras.trim()+')</em>':'')+'</span>'+
+      '<span class="rtag '+rcls+'">'+l.risk.toUpperCase()+'</span>'+
+      '<span class="lpts" style="color:'+(l.pts>0?'var(--low)':l.pts===0?'var(--sand)':'var(--high)')+'">'+
+      (l.pts>0?'+':'')+l.pts+'</span>'+
+      '</div>';
   }
   document.getElementById('log-list').innerHTML=loghtml;
   document.getElementById('sum-verdict').innerHTML='<strong>'+p+':</strong> '+PDESC[p]+'<br><br>'+t.verdict;
@@ -936,10 +1255,10 @@ function showSummary(){
 function screenshot(){
   var el=document.getElementById('sumcard');
   var btn=document.querySelector('.btng');
-  btn.textContent='Capturing...';btn.disabled=true;
+  btn.textContent='Capturing...'; btn.disabled=true;
   html2canvas(el,{backgroundColor:'#100b06',scale:2.5,useCORS:true,logging:false,windowWidth:800}).then(function(canvas){
     var a=document.createElement('a');
-    a.download='survival-card-'+S.avatar.replace(/\s+/g,'-')+'.png';
+    a.download='survival-card-'+S.name.replace(/\s+/g,'-')+'.png';
     a.href=canvas.toDataURL('image/png');
     a.click();
     btn.textContent='Saved!';
@@ -949,11 +1268,13 @@ function screenshot(){
 
 // ---- REPLAY ----
 function replay(){
-  S={room:'',avatar:'',stage:0,total:0,log:[],bonusEarned:0,qCorrect:0};
-  pendingChoice=null;bonusDie=false;fireClicks=0;fireLeft=10;fireGoing=false;
+  if(flareTimer){clearInterval(flareTimer);flareTimer=null;}
   if(fireTimer){clearInterval(fireTimer);fireTimer=null;}
-  document.getElementById('inp-room').value='';
-  document.getElementById('inp-avatar').value='';
+  S={name:'',stage:0,total:0,log:[],bonusEarned:0,qCorrect:0};
+  pendingChoice=null; bonusDie=false; isDoubles=false;
+  fireClicks=0; fireLeft=10; fireGoing=false;
+  flarePos=0; flareFired=false; flareGoing=false;
+  document.getElementById('inp-name').value='';
   showScreen('s-intro');
 }
 </script>
